@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="100%" height="100%">
+  <rect width="800" height="400" fill="#0d1117" rx="8"/>
+  <text x="400" y="35" text-anchor="middle" fill="#58a6ff" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif" font-size="18" font-weight="bold">Runbox v0.1.1 — Python Trial P95 Latency Stability</text>
+  <text x="400" y="58" text-anchor="middle" fill="#8b949e" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif" font-size="13">Individual Trial P95 vs. Target &lt; 200ms Ceiling</text>
+
+  <line x1="80" y1="330" x2="740" y2="330" stroke="#30363d" stroke-width="2"/>
+  <line x1="80" y1="90" x2="80" y2="330" stroke="#30363d" stroke-width="2"/>
+
+  <!-- Target Line: 200ms -->
+  <line x1="80" y1="109.99999999999997" x2="740" y2="109.99999999999997" stroke="#f85149" stroke-dasharray="4"/>
+  <text x="735" y="104.99999999999997" text-anchor="end" fill="#f85149" font-size="11">Target Limit: 200ms</text>
+
+  <!-- Bars for each trial -->
+  <rect x="120" y="191.74099999999999" width="70" height="138.25900000000001" fill="#238636" rx="4"/>
+  <text x="155" y="181.74099999999999" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">125.69ms</text>
+  <text x="155" y="350" text-anchor="middle" fill="#8b949e" font-size="12">Trial 1</text>
+
+  <rect x="230" y="154.319" width="70" height="175.681" fill="#238636" rx="4"/>
+  <text x="265" y="144.319" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">159.71ms</text>
+  <text x="265" y="350" text-anchor="middle" fill="#8b949e" font-size="12">Trial 2</text>
+
+  <rect x="340" y="175.74699999999999" width="70" height="154.25300000000001" fill="#d29922" rx="4"/>
+  <text x="375" y="165.74699999999999" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">140.23ms</text>
+  <text x="375" y="350" text-anchor="middle" fill="#8b949e" font-size="12">Trial 3</text>
+
+  <rect x="450" y="164.49399999999997" width="70" height="165.50600000000003" fill="#238636" rx="4"/>
+  <text x="485" y="154.49399999999997" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">150.46ms</text>
+  <text x="485" y="350" text-anchor="middle" fill="#8b949e" font-size="12">Trial 4</text>
+
+  <rect x="560" y="124.93799999999999" width="70" height="205.062" fill="#238636" rx="4"/>
+  <text x="595" y="114.93799999999999" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">186.42ms</text>
+  <text x="595" y="350" text-anchor="middle" fill="#8b949e" font-size="12">Trial 5</text>
+
+  <!-- Median Trial P95 -->
+  <rect x="670" y="164.49399999999997" width="70" height="165.50600000000003" fill="#1f6feb" rx="4"/>
+  <text x="705" y="154.49399999999997" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">150.46ms</text>
+  <text x="705" y="350" text-anchor="middle" fill="#58a6ff" font-size="12">Median P95</text>
+</svg>

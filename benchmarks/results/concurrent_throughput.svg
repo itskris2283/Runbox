@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="100%" height="100%">
+  <rect width="800" height="400" fill="#0d1117" rx="8"/>
+  <text x="400" y="35" text-anchor="middle" fill="#58a6ff" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif" font-size="18" font-weight="bold">Runbox v0.1.1 — Concurrent Throughput Performance</text>
+  <text x="400" y="58" text-anchor="middle" fill="#8b949e" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif" font-size="13">Target: &gt;30 jobs/sec across 25 Parallel Multi-Tenant Execution Slots</text>
+
+  <line x1="80" y1="330" x2="740" y2="330" stroke="#30363d" stroke-width="2"/>
+  <line x1="80" y1="90" x2="80" y2="330" stroke="#30363d" stroke-width="2"/>
+
+  <!-- Target line: 30 jobs/sec -->
+  <line x1="80" y1="246.0" x2="740" y2="246.0" stroke="#f85149" stroke-dasharray="4"/>
+  <text x="735" y="241.0" text-anchor="end" fill="#f85149" font-size="11">Target: 30 jobs/sec</text>
+
+  <!-- Bars for 5 trials -->
+  <rect x="120" y="96.564" width="70" height="233.436" fill="#238636" rx="4"/>
+  <text x="155" y="86.564" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">83.37</text>
+  <text x="155" y="350" text-anchor="middle" fill="#8b949e" font-size="12">Trial 1</text>
+
+  <rect x="230" y="75.98400000000001" width="70" height="254.016" fill="#238636" rx="4"/>
+  <text x="265" y="65.98400000000001" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">90.72</text>
+  <text x="265" y="350" text-anchor="middle" fill="#8b949e" font-size="12">Trial 2</text>
+
+  <rect x="340" y="65.65200000000004" width="70" height="264.34799999999996" fill="#238636" rx="4"/>
+  <text x="375" y="55.652000000000044" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">94.41</text>
+  <text x="375" y="350" text-anchor="middle" fill="#8b949e" font-size="12">Trial 3 (Peak)</text>
+
+  <rect x="450" y="75.50800000000001" width="70" height="254.492" fill="#238636" rx="4"/>
+  <text x="485" y="65.50800000000001" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">90.89</text>
+  <text x="485" y="350" text-anchor="middle" fill="#8b949e" font-size="12">Trial 4</text>
+
+  <rect x="560" y="67.22000000000003" width="70" height="262.78" fill="#238636" rx="4"/>
+  <text x="595" y="57.22000000000003" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">93.85</text>
+  <text x="595" y="350" text-anchor="middle" fill="#8b949e" font-size="12">Trial 5</text>
+
+  <rect x="670" y="76.18" width="70" height="253.82" fill="#1f6feb" rx="4"/>
+  <text x="705" y="66.18" text-anchor="middle" fill="#fff" font-size="12" font-weight="bold">90.65</text>
+  <text x="705" y="350" text-anchor="middle" fill="#58a6ff" font-size="12">Mean (2.3x)</text>
+</svg>

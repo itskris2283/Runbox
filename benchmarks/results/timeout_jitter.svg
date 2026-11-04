@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="100%" height="100%">
+  <rect width="800" height="400" fill="#0d1117" rx="8"/>
+  <text x="400" y="35" text-anchor="middle" fill="#58a6ff" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif" font-size="18" font-weight="bold">Runbox v0.1.1 — Kernel Timerfd Precision &amp; Jitter (300 Probes)</text>
+  <text x="400" y="58" text-anchor="middle" fill="#8b949e" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif" font-size="13">100 Probes each for 500ms, 1000ms, 1500ms | Monotonic Deadline Enforcement</text>
+
+  <line x1="80" y1="330" x2="740" y2="330" stroke="#30363d" stroke-width="2"/>
+  <line x1="80" y1="90" x2="80" y2="330" stroke="#30363d" stroke-width="2"/>
+
+  <!-- Threshold indicators -->
+  <line x1="80" y1="105.0" x2="740" y2="105.0" stroke="#f85149" stroke-dasharray="4"/>
+  <text x="735" y="100.0" text-anchor="end" fill="#f85149" font-size="11">P95 Threshold (50ms)</text>
+
+  <!-- Bars for P50, Mean, P90, P95, Max -->
+  <rect x="140" y="15" width="70" height="315" fill="#238636" rx="4"/>
+  <text x="175" y="5" text-anchor="middle" fill="#e6edf3" font-size="12" font-weight="bold">9ms</text>
+  <text x="175" y="350" text-anchor="middle" fill="#8b949e" font-size="12">P50 Jitter</text>
+
+  <rect x="260" y="-130.95" width="70" height="460.95" fill="#1f6feb" rx="4"/>
+  <text x="295" y="-140.95" text-anchor="middle" fill="#e6edf3" font-size="12" font-weight="bold">13.17ms</text>
+  <text x="295" y="350" text-anchor="middle" fill="#8b949e" font-size="12">Mean Jitter</text>
+
+  <rect x="380" y="-650" width="70" height="980" fill="#1f6feb" rx="4"/>
+  <text x="415" y="-660" text-anchor="middle" fill="#e6edf3" font-size="12" font-weight="bold">28ms</text>
+  <text x="415" y="350" text-anchor="middle" fill="#8b949e" font-size="12">P90 Jitter</text>
+
+  <rect x="500" y="-1035" width="70" height="1365" fill="#238636" rx="4"/>
+  <text x="535" y="-1045" text-anchor="middle" fill="#e6edf3" font-size="12" font-weight="bold">39ms</text>
+  <text x="535" y="350" text-anchor="middle" fill="#8b949e" font-size="12">P95 (Target &lt;50)</text>
+
+  <rect x="620" y="-2435" width="70" height="2765" fill="#238636" rx="4"/>
+  <text x="655" y="-2445" text-anchor="middle" fill="#e6edf3" font-size="12" font-weight="bold">79ms</text>
+  <text x="655" y="350" text-anchor="middle" fill="#8b949e" font-size="12">Max (Target &lt;100)</text>
+</svg>

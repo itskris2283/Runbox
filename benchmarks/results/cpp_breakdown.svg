@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="100%" height="100%">
+  <rect width="800" height="400" fill="#0d1117" rx="8"/>
+  <text x="400" y="35" text-anchor="middle" fill="#58a6ff" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif" font-size="18" font-weight="bold">Runbox v0.1.1 — C++20 Two-Stage Latency Breakdown (250 Samples)</text>
+  <text x="400" y="58" text-anchor="middle" fill="#8b949e" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif" font-size="13">Compilation Phase vs. Binary Execution Phase vs. Total E2E</text>
+
+  <line x1="80" y1="330" x2="740" y2="330" stroke="#30363d" stroke-width="2"/>
+  <line x1="80" y1="90" x2="80" y2="330" stroke="#30363d" stroke-width="2"/>
+
+  <!-- Legend -->
+  <rect x="220" y="75" width="14" height="14" fill="#a371f7" rx="2"/>
+  <text x="240" y="87" fill="#c9d1d9" font-size="12">Stage 1: Isolated g++ Compile</text>
+  <rect x="460" y="75" width="14" height="14" fill="#238636" rx="2"/>
+  <text x="480" y="87" fill="#c9d1d9" font-size="12">Stage 2: Sandboxed Binary Exec</text>
+
+  <!-- P50 Breakdown -->
+  <text x="220" y="140" fill="#58a6ff" font-size="14" font-weight="bold">P50 (Median): 916.38ms (Target &lt; 1000ms: PASSED)</text>
+  <rect x="220" y="150" width="348.8" height="32" fill="#a371f7" rx="4"/>
+  <text x="394.4" y="171" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">872.0ms</text>
+  
+  <rect x="568.8" y="150" width="25" height="32" fill="#238636" rx="4"/>
+  <text x="580.8" y="171" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">10.0ms</text>
+
+  <!-- Mean Breakdown -->
+  <text x="220" y="215" fill="#58a6ff" font-size="14" font-weight="bold">Mean: 938.34ms</text>
+  <rect x="220" y="225" width="357.588" height="32" fill="#a371f7" rx="4"/>
+  <text x="398.794" y="246" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">893.97ms</text>
+  
+  <rect x="577.588" y="225" width="25" height="32" fill="#238636" rx="4"/>
+  <text x="589.588" y="246" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">15.53ms</text>
+
+  <!-- P95 Breakdown -->
+  <text x="220" y="290" fill="#58a6ff" font-size="14" font-weight="bold">P95: 1076.03ms</text>
+  <rect x="220" y="300" width="412.40000000000003" height="32" fill="#a371f7" rx="4"/>
+  <text x="426.20000000000005" y="321" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">1031.0ms</text>
+  
+  <rect x="632.4000000000001" y="300" width="25" height="32" fill="#238636" rx="4"/>
+  <text x="647.4000000000001" y="321" text-anchor="middle" fill="#fff" font-size="11" font-weight="bold">39.0ms</text>
+</svg>

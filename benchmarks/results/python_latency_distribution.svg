@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="100%" height="100%">
+  <rect width="800" height="400" fill="#0d1117" rx="8"/>
+  <text x="400" y="35" text-anchor="middle" fill="#58a6ff" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif" font-size="18" font-weight="bold">Runbox v0.1.1 — Python Sandboxed Execution Latency (1,000 Samples)</text>
+  <text x="400" y="58" text-anchor="middle" fill="#8b949e" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif" font-size="13">Target: P50 &lt; 100ms | P95 &lt; 200ms | P99 &lt; 350ms</text>
+  
+  <line x1="80" y1="330" x2="740" y2="330" stroke="#30363d" stroke-width="2"/>
+  <line x1="80" y1="90" x2="80" y2="330" stroke="#30363d" stroke-width="2"/>
+  
+  <!-- Grid lines -->
+  <line x1="80" y1="270" x2="740" y2="270" stroke="#21262d" stroke-dasharray="4"/>
+  <text x="70" y="275" text-anchor="end" fill="#8b949e" font-size="11">100ms</text>
+  <line x1="80" y1="210" x2="740" y2="210" stroke="#21262d" stroke-dasharray="4"/>
+  <text x="70" y="215" text-anchor="end" fill="#8b949e" font-size="11">200ms</text>
+  <line x1="80" y1="150" x2="740" y2="150" stroke="#21262d" stroke-dasharray="4"/>
+  <text x="70" y="155" text-anchor="end" fill="#8b949e" font-size="11">300ms</text>
+
+  <!-- Bars -->
+  <!-- Min: 79.42ms -->
+  <rect x="120" y="282.348" width="70" height="47.652" fill="#238636" rx="4"/>
+  <text x="155" y="272.348" text-anchor="middle" fill="#e6edf3" font-size="12" font-weight="bold">79.42ms</text>
+  <text x="155" y="350" text-anchor="middle" fill="#8b949e" font-size="12">Min</text>
+
+  <!-- P50: 118.07ms -->
+  <rect x="230" y="259.158" width="70" height="70.842" fill="#238636" rx="4"/>
+  <text x="265" y="249.15800000000002" text-anchor="middle" fill="#e6edf3" font-size="12" font-weight="bold">118.07ms</text>
+  <text x="265" y="350" text-anchor="middle" fill="#8b949e" font-size="12">P50 (Median)</text>
+
+  <!-- Mean: 120.53ms -->
+  <rect x="340" y="257.682" width="70" height="72.318" fill="#1f6feb" rx="4"/>
+  <text x="375" y="247.68200000000002" text-anchor="middle" fill="#e6edf3" font-size="12" font-weight="bold">120.53ms</text>
+  <text x="375" y="350" text-anchor="middle" fill="#8b949e" font-size="12">Mean</text>
+
+  <!-- P90: 149.24ms -->
+  <rect x="450" y="240.45600000000002" width="70" height="89.544" fill="#1f6feb" rx="4"/>
+  <text x="485" y="230.45600000000002" text-anchor="middle" fill="#e6edf3" font-size="12" font-weight="bold">149.24ms</text>
+  <text x="485" y="350" text-anchor="middle" fill="#8b949e" font-size="12">P90</text>
+
+  <!-- P95: 159.37ms -->
+  <rect x="560" y="234.378" width="70" height="95.622" fill="#d29922" rx="4"/>
+  <text x="595" y="224.378" text-anchor="middle" fill="#e6edf3" font-size="12" font-weight="bold">159.37ms</text>
+  <text x="595" y="350" text-anchor="middle" fill="#8b949e" font-size="12">P95 (Target &lt;200)</text>
+
+  <!-- P99: 186.42ms -->
+  <rect x="670" y="218.14800000000002" width="70" height="111.85199999999999" fill="#f85149" rx="4"/>
+  <text x="705" y="208.14800000000002" text-anchor="middle" fill="#e6edf3" font-size="12" font-weight="bold">186.42ms</text>
+  <text x="705" y="350" text-anchor="middle" fill="#8b949e" font-size="12">P99 (Target &lt;350)</text>
+</svg>

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450" width="100%" height="100%">
+  <rect width="800" height="450" fill="#0d1117" rx="8"/>
+  <rect width="800" height="50" fill="#161b22" stroke="#30363d" stroke-width="1" rx="8"/>
+  <text x="30" y="32" fill="#58a6ff" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="16" font-weight="bold">Runbox System Health &amp; Kernel Diagnostics</text>
+
+  <!-- Status Cards -->
+  <g transform="translate(30, 70)">
+    <!-- Card 1: Supervisor Binary -->
+    <rect width="360" height="80" rx="6" fill="#161b22" stroke="#30363d"/>
+    <circle cx="30" cy="40" r="12" fill="#238636"/>
+    <text x="30" y="45" text-anchor="middle" fill="#fff" font-size="14">✓</text>
+    <text x="55" y="35" fill="#e6edf3" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="14" font-weight="bold">C++ Supervisor Binary</text>
+    <text x="55" y="55" fill="#8b949e" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12">build-release/runbox-supervisor (ELF 64-bit)</text>
+
+    <!-- Card 2: Cgroups v2 -->
+    <rect x="380" width="360" height="80" rx="6" fill="#161b22" stroke="#30363d"/>
+    <circle cx="410" cy="40" r="12" fill="#238636"/>
+    <text x="410" y="45" text-anchor="middle" fill="#fff" font-size="14">✓</text>
+    <text x="435" y="35" fill="#e6edf3" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="14" font-weight="bold">Unified Cgroups v2</text>
+    <text x="435" y="55" fill="#8b949e" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12">/sys/fs/cgroup/runbox (+memory +cpu +pids)</text>
+
+    <!-- Card 3: Linux Namespaces -->
+    <rect y="95" width="360" height="80" rx="6" fill="#161b22" stroke="#30363d"/>
+    <circle cx="30" cy="135" r="12" fill="#238636"/>
+    <text x="30" y="140" text-anchor="middle" fill="#fff" font-size="14">✓</text>
+    <text x="55" y="130" fill="#e6edf3" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="14" font-weight="bold">Linux Namespaces (6/6)</text>
+    <text x="55" y="150" fill="#8b949e" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12">PID 1 Mapping, NET, NS, IPC, UTS, CGROUP</text>
+
+    <!-- Card 4: Landlock & Seccomp -->
+    <rect x="380" y="95" width="360" height="80" rx="6" fill="#161b22" stroke="#30363d"/>
+    <circle cx="410" cy="135" r="12" fill="#238636"/>
+    <text x="410" y="140" text-anchor="middle" fill="#fff" font-size="14">✓</text>
+    <text x="435" y="130" fill="#e6edf3" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="14" font-weight="bold">Kernel LSM &amp; Seccomp</text>
+    <text x="435" y="150" fill="#8b949e" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="12">Landlock ABI v3 Active | Seccomp BPF Kill Action</text>
+
+    <!-- Worker Pool Telemetry -->
+    <rect y="190" width="740" height="150" rx="6" fill="#161b22" stroke="#30363d"/>
+    <text x="25" y="225" fill="#e6edf3" font-family="-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif" font-size="14" font-weight="bold">Scheduler Worker Pool &amp; Queue Status</text>
+    
+    <text x="25" y="260" fill="#8b949e" font-size="12">Active Concurrency Slots: 25</text>
+    <text x="250" y="260" fill="#8b949e" font-size="12">Worker Depth: 0 Active / 25 Idle</text>
+    <text x="480" y="260" fill="#8b949e" font-size="12">Queue Depth: 0 Pending</text>
+
+    <text x="25" y="295" fill="#8b949e" font-size="12">Database Persistence: SQLite 3.45 (WAL Mode)</text>
+    <text x="480" y="295" fill="#8b949e" font-size="12">Synchronous Pragma: NORMAL</text>
+    <text x="25" y="325" fill="#2ea043" font-size="13" font-weight="bold">All 6 Concentric Kernel Isolation Layers Operating Nominally</text>
+  </g>
+</svg>

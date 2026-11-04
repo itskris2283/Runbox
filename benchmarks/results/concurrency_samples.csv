@@ -1,0 +1,6 @@
+trial,burst_size,total_time_seconds,throughput_jobs_per_sec,mean_queue_and_exec_time_ms,p50_wait_time_ms,max_active_jobs,failed_jobs,timed_out_jobs,scheduler_fairness
+1,25,0.3,83.37,148.37,142.52,25,0,0,Equal round-robin distribution across 5 tenants
+2,25,0.276,90.72,173.74,195.92,25,0,0,Equal round-robin distribution across 5 tenants
+3,25,0.265,94.41,151.78,148.98,25,0,0,Equal round-robin distribution across 5 tenants
+4,25,0.275,90.89,163.77,168.54,25,0,0,Equal round-robin distribution across 5 tenants
+5,25,0.266,93.85,155.49,157.63,25,0,0,Equal round-robin distribution across 5 tenants

@@ -1,0 +1,56 @@
+# Build Artifacts
+build/
+build-*/
+cmake-build-*/
+compile_commands.json
+
+# C++ Object files & Libraries
+*.o
+*.a
+*.so
+*.dylib
+*.dll
+*.exe
+
+# Gcov & Coverage profiling
+*.gcno
+*.gcda
+*.gcov
+coverage/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+
+# Python Cache & Virtual Environments
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.ruff_cache/
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+
+# SQLite & Runtime Storage
+*.db
+*.db-wal
+*.db-shm
+/tmp/runbox_*
+
+# Node & Frontend Dashboard
+node_modules/
+dashboard/node_modules/
+dashboard/dist/
+.npm/
+
+# IDE & Editor Specific
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
