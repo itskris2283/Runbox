@@ -18,6 +18,10 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      - name: Configure kernel sysctl for unprivileged user namespaces
+        run: |
+          sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0 || true
+
       - name: Install C++ system dependencies
         run: |
           sudo apt-get update
@@ -28,7 +32,10 @@ jobs:
           sudo mkdir -p /sys/fs/cgroup/runbox
           echo "+memory +cpu +pids" | sudo tee /sys/fs/cgroup/cgroup.subtree_control || true
           echo "+memory +cpu +pids" | sudo tee /sys/fs/cgroup/runbox/cgroup.subtree_control || true
-          sudo chown -R $USER:$USER /sys/fs/cgroup/runbox
+          RUNNER_USER=$(id -u -n)
+          RUNNER_GRP=$(id -g -n)
+          sudo chown -R ${RUNNER_USER}:${RUNNER_GRP} /sys/fs/cgroup/runbox
+          sudo chmod 777 /sys/fs/cgroup/runbox
 
       - name: Configure CMake (Release)
         run: |
@@ -37,20 +44,22 @@ jobs:
       - name: Build C++ Binaries with strict flags (-Werror)
         run: |
           cmake --build build-release -j$(nproc)
+          sudo chmod u+s build-release/runbox-supervisor || true
 
-      - name: Execute GoogleTest suite (93 tests)
+      - name: Execute GoogleTest suite (96 tests)
         run: |
-          ./build-release/runbox_tests
+          sudo ./build-release/runbox_tests
 
       - name: Configure CMake with Code Coverage instrumentation
         run: |
           cmake -B build-cov -DCMAKE_BUILD_TYPE=Debug -DENABLE_COVERAGE=ON -DBUILD_TESTS=ON
           cmake --build build-cov -j$(nproc)
+          sudo chmod u+s build-cov/runbox-supervisor || true
 
       - name: Run instrumented tests & generate GCOV report
         run: |
-          ./build-cov/runbox_tests
-          python3 scripts/generate_cpp_coverage.py
+          sudo ./build-cov/runbox_tests
+          python3 scripts/generate_cpp_coverage.py build-cov
 
       - name: Upload C++ coverage report
         uses: actions/upload-artifact@v4
@@ -65,6 +74,10 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      - name: Configure kernel sysctl for unprivileged user namespaces
+        run: |
+          sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0 || true
+
       - name: Install system dependencies & libseccomp
         run: |
           sudo apt-get update
@@ -75,12 +88,16 @@ jobs:
           sudo mkdir -p /sys/fs/cgroup/runbox
           echo "+memory +cpu +pids" | sudo tee /sys/fs/cgroup/cgroup.subtree_control || true
           echo "+memory +cpu +pids" | sudo tee /sys/fs/cgroup/runbox/cgroup.subtree_control || true
-          sudo chown -R $USER:$USER /sys/fs/cgroup/runbox
+          RUNNER_USER=$(id -u -n)
+          RUNNER_GRP=$(id -g -n)
+          sudo chown -R ${RUNNER_USER}:${RUNNER_GRP} /sys/fs/cgroup/runbox
+          sudo chmod 777 /sys/fs/cgroup/runbox
 
       - name: Build supervisor binary for integration harness
         run: |
           cmake -B build-release -DCMAKE_BUILD_TYPE=Release
           cmake --build build-release -j$(nproc)
+          sudo chmod u+s build-release/runbox-supervisor || true
 
       - name: Set up Python 3.12
         uses: actions/setup-python@v5
@@ -115,6 +132,10 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
 
+      - name: Configure kernel sysctl for unprivileged user namespaces
+        run: |
+          sudo sysctl -w kernel.apparmor_restrict_unprivileged_userns=0 || true
+
       - name: Install system dependencies
         run: |
           sudo apt-get update
@@ -125,12 +146,16 @@ jobs:
           sudo mkdir -p /sys/fs/cgroup/runbox
           echo "+memory +cpu +pids" | sudo tee /sys/fs/cgroup/cgroup.subtree_control || true
           echo "+memory +cpu +pids" | sudo tee /sys/fs/cgroup/runbox/cgroup.subtree_control || true
-          sudo chown -R $USER:$USER /sys/fs/cgroup/runbox
+          RUNNER_USER=$(id -u -n)
+          RUNNER_GRP=$(id -g -n)
+          sudo chown -R ${RUNNER_USER}:${RUNNER_GRP} /sys/fs/cgroup/runbox
+          sudo chmod 777 /sys/fs/cgroup/runbox
 
       - name: Build supervisor binary
         run: |
           cmake -B build-release -DCMAKE_BUILD_TYPE=Release
           cmake --build build-release -j$(nproc)
+          sudo chmod u+s build-release/runbox-supervisor || true
 
       - name: Set up Python 3.12
         uses: actions/setup-python@v5
@@ -140,14 +165,16 @@ jobs:
 
       - name: Install Python dependencies
         run: |
+          python -m pip install --upgrade pip
           pip install -e ".[dev]"
 
       - name: Run Secret Scan
         run: |
           python3 scripts/secret_scan.py
 
-      - name: Execute 42-Vector Adversarial Security Suite
+      - name: Execute 40-Vector Adversarial Security Suite
         run: |
+          sudo chmod u+s build-release/runbox-supervisor || true
           PYTHONPATH=. pytest tests/adversarial -v
 
   frontend-dashboard:

@@ -26,7 +26,18 @@ CORE_FILES = [
 
 def main():
     repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
-    build_dir = os.path.join(repo_root, "build")
+    if len(sys.argv) > 1 and os.path.isabs(sys.argv[1]):
+        build_dir = sys.argv[1]
+    elif len(sys.argv) > 1:
+        build_dir = os.path.join(repo_root, sys.argv[1])
+    elif os.environ.get("RUNBOX_BUILD_DIR"):
+        build_dir = os.environ.get("RUNBOX_BUILD_DIR")
+    elif os.path.exists(os.path.join(repo_root, "build")):
+        build_dir = os.path.join(repo_root, "build")
+    elif os.path.exists(os.path.join(repo_root, "build-cov")):
+        build_dir = os.path.join(repo_root, "build-cov")
+    else:
+        build_dir = os.path.join(repo_root, "build")
     obj_base = os.path.join(build_dir, "CMakeFiles", "runbox_core.dir")
 
     print("=================================================================")
