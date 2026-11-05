@@ -291,7 +291,11 @@ bool Supervisor::apply_child_security(const JobConfig& config) {
     security::SecurityLimits sec_limits;
     sec_limits.cpu_seconds = static_cast<uint32_t>((config.limits.timeout_ms + 999) / 1000);
     sec_limits.as_limit_bytes = 0;
-    sec_limits.max_pids = 0;
+    if (config.limits.process_limit > 0) {
+        sec_limits.max_pids = config.limits.process_limit;
+    } else {
+        sec_limits.max_pids = 0;
+    }
     security::PrivilegeManager priv_mgr(sec_limits);
 
     priv_mgr.enable_no_new_privs();
@@ -367,6 +371,15 @@ void Supervisor::execute_child(const JobConfig& config,
         ::_exit(101);
     }
 
+    // Ensure child drops setuid privilege to real user before unsharing user namespace
+    // so that the caller's real UID owns the user namespace and maps cleanly without overflowuid (65534)
+    if (::setegid(::getgid()) != 0) {
+        // ignore if not setgid
+    }
+    if (::seteuid(::getuid()) != 0) {
+        // ignore if not setuid
+    }
+
     // 1. Establish Linux Namespaces (Unshare)
     namespaces::NamespaceConfig ns_cfg;
     ns_cfg.hostname = "runbox-" + config.execution_id.substr(0, std::min(size_t{8}, config.execution_id.size()));
@@ -388,6 +401,14 @@ void Supervisor::execute_child(const JobConfig& config,
     char go = 0;
     ignore_io_result(::read(sync_p2c_read, &go, 1));
     ::close(sync_p2c_read);
+
+    // Initialize in-namespace credentials to root (UID 0 / GID 0)
+    if (::setresgid(0, 0, 0) != 0) {
+        // ignore if already 0
+    }
+    if (::setresuid(0, 0, 0) != 0) {
+        // ignore if already 0
+    }
 
     // 2. Setup Private Mounts (now that UID 0 mapping is active)
     ns_mgr.setup_private_mounts();

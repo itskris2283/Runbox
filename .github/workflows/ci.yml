@@ -44,7 +44,8 @@ jobs:
       - name: Build C++ Binaries with strict flags (-Werror)
         run: |
           cmake --build build-release -j$(nproc)
-          sudo chmod u+s build-release/runbox-supervisor || true
+          sudo chown root:root build-release/runbox-supervisor
+          sudo chmod 4755 build-release/runbox-supervisor
 
       - name: Execute GoogleTest suite (96 tests)
         run: |
@@ -54,7 +55,8 @@ jobs:
         run: |
           cmake -B build-cov -DCMAKE_BUILD_TYPE=Debug -DENABLE_COVERAGE=ON -DBUILD_TESTS=ON
           cmake --build build-cov -j$(nproc)
-          sudo chmod u+s build-cov/runbox-supervisor || true
+          sudo chown root:root build-cov/runbox-supervisor
+          sudo chmod 4755 build-cov/runbox-supervisor
 
       - name: Run instrumented tests & generate GCOV report
         run: |
@@ -97,7 +99,11 @@ jobs:
         run: |
           cmake -B build-release -DCMAKE_BUILD_TYPE=Release
           cmake --build build-release -j$(nproc)
-          sudo chmod u+s build-release/runbox-supervisor || true
+          sudo chown root:root build-release/runbox-supervisor
+          sudo chmod 4755 build-release/runbox-supervisor
+          sudo cp build-release/runbox-supervisor /usr/local/bin/runbox-supervisor
+          sudo chown root:root /usr/local/bin/runbox-supervisor
+          sudo chmod 4755 /usr/local/bin/runbox-supervisor
 
       - name: Set up Python 3.12
         uses: actions/setup-python@v5
@@ -117,6 +123,7 @@ jobs:
 
       - name: Execute Python Unit & Integration Tests
         run: |
+          export RUNBOX_SUPERVISOR_BIN=/usr/local/bin/runbox-supervisor
           PYTHONPATH=. pytest tests/unit tests/integration --cov=api --cov=runtimes --cov-report=term-missing --cov-report=xml:coverage.xml
 
       - name: Upload Python test coverage
@@ -155,7 +162,11 @@ jobs:
         run: |
           cmake -B build-release -DCMAKE_BUILD_TYPE=Release
           cmake --build build-release -j$(nproc)
-          sudo chmod u+s build-release/runbox-supervisor || true
+          sudo chown root:root build-release/runbox-supervisor
+          sudo chmod 4755 build-release/runbox-supervisor
+          sudo cp build-release/runbox-supervisor /usr/local/bin/runbox-supervisor
+          sudo chown root:root /usr/local/bin/runbox-supervisor
+          sudo chmod 4755 /usr/local/bin/runbox-supervisor
 
       - name: Set up Python 3.12
         uses: actions/setup-python@v5
@@ -174,7 +185,7 @@ jobs:
 
       - name: Execute 40-Vector Adversarial Security Suite
         run: |
-          sudo chmod u+s build-release/runbox-supervisor || true
+          export RUNBOX_SUPERVISOR_BIN=/usr/local/bin/runbox-supervisor
           PYTHONPATH=. pytest tests/adversarial -v
 
   frontend-dashboard:
